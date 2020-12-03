@@ -2,6 +2,62 @@
 
 > 不更新了, 我的wepy版本也很老~~ 不建议用
 
+=========================================================================================================================================================================
+### 特性：
+
+- 类 Vue 开发风格
+- 支持自定义组件开发
+- 支持引入 NPM 包
+- 支持 [Promise](https://github.com/wepyjs/wepy/wiki/wepy%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8Promise)
+- 支持 ES2015+ 特性，如 [Async Functions](https://github.com/wepyjs/wepy/wiki/wepy%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8async-await)
+- 支持多种编译器，Less/Sass/Stylus/PostCSS、Babel/Typescript、Pug
+- 支持多种插件处理，文件压缩，图片压缩，内容替换等
+- 支持 Sourcemap，ESLint 等
+- 小程序细节优化，如请求列队，事件优化等
+
+### Demo
+
+```html
+<style lang="less">
+@color: #4D926F;
+  .num {
+  color: @color;
+  }
+</style>
+<template>
+  <div class="container">
+    <div class="num" @tap="num++">
+      {{num}}
+    </div>
+    <custom-component></custom-component>
+    <vendor-component></vendor-component>
+    <div>{{text}}</div>
+    <input v-model="text"/>
+  </div>
+</template>
+<config>
+{
+  usingComponents: {
+    customComponent: '@/components/customComponent',
+    vendorComponent: 'module:vendorComponent'
+  }
+}
+</config>
+
+<script>
+  import wepy from '@wepy/core';
+
+  wepy.page({
+    data: {
+      num: 0,
+      text: 'Hello World',
+    },
+  });
+</script>
+```
+
+=========================================================================================================================================================================
+
 ## 开发前准备
 
 开发前请先熟悉[wepy文档](https://tencent.github.io/wepy/document.html#/)
